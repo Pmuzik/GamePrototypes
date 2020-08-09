@@ -11,3 +11,5 @@ speech.py seems to mess up the formatting.
 8/9/2020:
 Added player combat and additional text to enemy tiles but some of the text does not seem to returning.
 Should diagram the flow of the program. This feels like a mess.
+
+Need to add "equip_weapon" command.

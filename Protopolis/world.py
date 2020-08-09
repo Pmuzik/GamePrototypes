@@ -50,34 +50,57 @@ class EnemyTile(MapTile):
         r = random.random()
         if r < 0.50:
             self.enemy = enemies.GiantSpider()
+            self.alive_text = "A giant spider jumps down from " \
+                "its web in front of you!"
+            self.dead_text = "The corpse of a dead spider " \
+                "rots on the ground."
         elif r < 0.80:
             self.enemy = enemies.Ogre()
+            self.alive_text = "An ogre is blocking your path!"
+            self.dead_text = "A dead ogre lies sprawled on the " \
+                "ground before you."
         elif r < 0.95:
             self.enemy = enemies.BatColony()
+            self.alive_text = "You hear a series of shrill squeaks " \
+                "getting closer... " \
+                "Suddenly you are lost in a swarm of bats!"
+            self.dead_text = "Dozens of dead bats are scattered on the ground."
         else:
             self.enemy = enemies.ChromeBeast()
+            self.alive_text = "A Chrome-Beast bursts from a wall and " \
+                "and bares its razor-sharp fangs at you!"
+            self.dead_text = "A puddle of silvery liquid lies where the " \
+                "Chrome-Beast once stood. It seems inert... for now."
 
         super().__init__(x, y)
 
     def intro_text(self):
         if self.enemy.is_alive():
-            return "A {} awaits!".format(self.enemy.name)
-        else:
-            return "You've defeated the {}.".format(self.enemy.name)
+            text = self.alive_text if self.enemy.is_alive() else self.dead_text
+            return text
+
+    def modify_player(self, player):
+        if self.enemy.is_alive():
+            player.hp = player.hp - self.enemy.damage
+            print("{} does {} damage. You have {} HP remaining.".format(self.enemy.name,
+                                                                        self.enemy.damage,
+                                                                        player.hp))
 
 # Test map 1
 world_map = [
-    [None, VictoryTile(1,0), None],
-    [None, EnemyTile(1,1), None],
-    [BoringTile(0,2), StartTile(1,2), BoringTile(2,2)],
-    [None, BoringTile(1,3), None]
+    [None, VictoryTile(1, 0), None],
+    [None, EnemyTile(1, 1), None],
+    [EnemyTile(0, 2), StartTile(1, 2), EnemyTile(2, 2)],
+    [None, EnemyTile(1, 3), None]
 ]
 
+
 def tile_at(x, y):
+
     if x < 0 or y < 0:
         return None
 
     try:
-        return world_map [y][x]
+        return world_map[y][x]
     except IndexError:
         return None

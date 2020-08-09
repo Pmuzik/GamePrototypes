@@ -39,14 +39,14 @@ class Ogre(Enemy):
 class BatColony(Enemy):
     def __init__(self):
         self.name = 'Colony of Bats'
-        self.hp = 100
+        self.hp = 75
         self.damage = d4.roll()
 
 
 class ChromeBeast(Enemy):
     def __init__(self):
         self.name = 'Chrome-Beast'
-        self.hp = 75
+        self.hp = 80
         self.damage = d6.roll() + 1
 
 

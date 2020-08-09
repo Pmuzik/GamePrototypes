@@ -3,7 +3,7 @@ import sys
 import time
 import os
 import world
-import speech
+# import speech # This module isn't working well yet
 
 
 def play():
@@ -33,6 +33,8 @@ def play():
                     player.examine_item(item)
                 else:
                     pass
+        elif action_input in ['a', 'A']:
+            player.attack()
         elif action_input in ['q', 'Q']:
             exit()
         elif action_input in ['h', 'H']:
@@ -42,6 +44,7 @@ def play():
                         * S, s: Go South\n
                         * E, e: Go East\n
                         * W, w: Go West\n
+                        * A, a: Attack\n
                         * I, i: Display inventory\n
                         * C, c: Examine details of an item\n
                         * H, h: Help\n

@@ -13,3 +13,6 @@ Added player combat and additional text to enemy tiles but some of the text does
 Should diagram the flow of the program. This feels like a mess.
 
 Need to add "equip_weapon" command.
+
+8/26/2020:
+Accidentally uploaded duplicate of Protopolis folder within Protopolis and don't know how to delete.

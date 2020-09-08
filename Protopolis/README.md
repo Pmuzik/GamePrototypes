@@ -16,3 +16,6 @@ Need to add "equip_weapon" command.
 
 8/26/2020:
 Accidentally uploaded duplicate of Protopolis folder within Protopolis and don't know how to delete.
+
+9/8/2020:
+I will probably start over.
